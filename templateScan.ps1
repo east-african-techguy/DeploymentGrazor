@@ -224,20 +224,20 @@ function Run-SubscriptionScan {
                                        $secretVal = $key[$i].Type
                                        if (($i.ToLowerInvariant() -like "*" + $item + "*") -and ($secretVal -eq 'String')) {
 
-                                            Write-Output "===============================================================================" | Out-File -Append "./demo.txt"  
+                                            Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
                                             Write-Output "Subscription ID :" $id | Out-File -Append "./demo.txt"  
-                                            Write-Output "===============================================================================" | Out-File -Append "./demo.txt"  
+                                            Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
 
-                                            Write-Output "==============================================" | Out-File -Append "./demo.txt"  
-                                            Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./demo.txt"  
-                                            Write-Output "==============================================" | Out-File -Append "./demo.txt"  
+                                            Write-Output "==============================================" | Out-File -Append "./results.txt"  
+                                            Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./results.txtt"  
+                                            Write-Output "==============================================" | Out-File -Append "./results.txt"  
 
-                                            Write-Output "==============================================" | Out-File -Append "./demo.txt"  
-                                            Write-Output " Secret in Deployment Template" $Deployment[$deploymentCount].DeploymentName | Out-File -Append "./demo.txt"   
-                                            Write-Output "==============================================" | Out-File -Append "./demo.txt" 
+                                            Write-Output "==============================================" | Out-File -Append "./results.txt"  
+                                            Write-Output " Secret in Deployment Template" $Deployment[$deploymentCount].DeploymentName | Out-File -Append "./results.txt"   
+                                            Write-Output "==============================================" | Out-File -Append "./results.txt" 
 
                                             # writes output and appends to file
-                                            Write-Output $i : $key[$i].Value | Out-File -Append "./demo.txt"  
+                                            Write-Output $i : $key[$i].Value | Out-File -Append "./results.txt"  
                                         }
                                     }
                            
@@ -256,22 +256,22 @@ function Run-SubscriptionScan {
                         foreach ($item in $secretTestCases) {
                             if ($data.Keys -like "*" + $item + "*") {
 
-                                Write-Output "===============================================================================" | Out-File -Append "./demo.txt"  
-                                Write-Output "Subscription ID :" $id | Out-File -Append "./demo.txt"  
-                                Write-Output "===============================================================================" | Out-File -Append "./demo.txt"  
+                                Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
+                                Write-Output "Subscription ID :" $id | Out-File -Append "./results.txt"  
+                                Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
 
 
-                                Write-Output "==============================================" | Out-File -Append "./demo.txt"  
-                                Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./demo.txt"  
-                                Write-Output "==============================================" | Out-File -Append "./demo.txt"  
+                                Write-Output "==============================================" | Out-File -Append "./results.txt"  
+                                Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./results.txt"  
+                                Write-Output "==============================================" | Out-File -Append "./results.txt"  
 
-                                Write-Output "==============================================" | Out-File -Append "./demo.txt"  
-                                Write-Output " Secret in Deployment Template" $Deployment[$deploymentCount].DeploymentName | Out-File -Append "./demo.txt"   
-                                Write-Output "==============================================" | Out-File -Append "./demo.txt" 
+                                Write-Output "==============================================" | Out-File -Append "./results.txt"  
+                                Write-Output " Secret in Deployment Template" $Deployment[$deploymentCount].DeploymentName | Out-File -Append "./results.txt"   
+                                Write-Output "==============================================" | Out-File -Append "./results.txt" 
 
 
 
-                                Write-Output $data.Keys ":" $data.Values | Out-File -Append "./demo.txt"                   
+                                Write-Output $data.Keys ":" $data.Values | Out-File -Append "./results.txt"                   
                             }
                         }
                     
