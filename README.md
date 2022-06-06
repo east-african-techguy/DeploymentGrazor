@@ -9,7 +9,7 @@ Powershell script used to discover secrets in Azure deployment templates
 #                                                                                         #
 #                                                                                         #
 #                             Written by: Javan Joshua Mnjama                             #
-#                                  @East-African-Tech-Guy                                 #
+#                                  @east-african-techguy                                  #
 #                                                                                         #
 #                                                                                         #
 ###########################################################################################
