@@ -1,9 +1,9 @@
 # DeploymentGrazor
-Powershell script used to discover secrets in Azure deployment templates
+
 
 ###########################################################################################
 #                                                                                         #
-#    Deployment Grazor - Used to discover secrets in insecure Azure Deployments           #
+#                        Used to discover secrets in insecure Azure Deployments           #
 #                                                                                         #
 ###########################################################################################
 #                                                                                         #
