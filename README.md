@@ -1,18 +1,11 @@
 # DeploymentGrazor
 
+Used to discover secrets in insecure Azure Deployments          
 
-###########################################################################################
-#                                                                                         #
-#                        Used to discover secrets in insecure Azure Deployments           #
-#                                                                                         #
-###########################################################################################
-#                                                                                         #
-#                                                                                         #
-#                             Written by: Javan Joshua Mnjama                             #
-#                                  @east-african-techguy                                  #
-#                                                                                         #
-#                                                                                         #
-###########################################################################################
+## Descriptions
+----------------------
+
+Azure deployment templates are static files stored in your tenant used describe your instantiated resources. When infrastructure as code tools such as bicep or terraform is used without either the @secure decorator to sensitive variable. This could result in secrets being exposed in clear text from deployment settings in Azure portal. To automate the process of discovering such secrets the DeploymentGrazor tool was created. 
 
 
 Versions Notes:
