@@ -40,4 +40,5 @@ HOW TO RUN Deployment Grazor:
 2) Open PowerShell in the Deployment Grazor folder with the permission to run scripts:
    "powershell -ExecutionPolicy Bypass -NoProfile"
 3) Import-Module ./DeploymentGrazor.ps1
-4) Run Start-DeploymentScan  
+4) Run Start-DeploymentScan
+5) Results of scan will be written in a txt file in the directory used to execute the script  
