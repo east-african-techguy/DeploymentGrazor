@@ -226,7 +226,7 @@ function Run-SubscriptionScan {
                                        if (($i.ToLowerInvariant() -like "*" + $item + "*") -and ($secretVal -eq 'String')) {
 
                                             Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
-                                            Write-Output "Subscription ID :" $id | Out-File -Append "./demo.txt"  
+                                            Write-Output "Subscription ID :" $id | Out-File -Append "./results.txt"  
                                             Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
 
                                             Write-Output "==============================================" | Out-File -Append "./results.txt"  
