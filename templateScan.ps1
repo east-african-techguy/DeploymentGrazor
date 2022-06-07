@@ -229,7 +229,7 @@ function Run-SubscriptionScan {
                                             Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
 
                                             Write-Output "==============================================" | Out-File -Append "./results.txt"  
-                                            Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./results.txtt"  
+                                            Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./results.txt"  
                                             Write-Output "==============================================" | Out-File -Append "./results.txt"  
 
                                             Write-Output "==============================================" | Out-File -Append "./results.txt"  
@@ -287,7 +287,7 @@ function Run-SubscriptionScan {
 
     
     
-    #    Write-Output "Output written to file ./demo.txt"
+     Write-Output "Output written to file ./results.txt"
     }
 }
 
