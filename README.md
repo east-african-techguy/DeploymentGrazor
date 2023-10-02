@@ -16,7 +16,7 @@ Versions Notes:
 Version 1.0 - 04-06-22
 
 
-### HOW TO INSTALL AZURE POWERSHELL MODULE:
+### How to install the Azure PowerShell Module:
 
 Guide for installing Azure "AZ" PowerShell Module:
 https://docs.microsoft.com/en-us/powershell/azure/install-az-ps
@@ -31,7 +31,7 @@ Else:
     Install-Module AzureAD -AllowClobber -Scope CurrentUser
     
 
-### HOW TO RUN Deployment Grazor:
+### How to run Deployment Grazor:
 
 1) Download/sync locally the script file templateScan.ps1 and DeploymentGrazor.ps1
 2) Open PowerShell in the Deployment Grazor folder with the permission to run scripts:
