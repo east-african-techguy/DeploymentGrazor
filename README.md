@@ -5,11 +5,9 @@ Used to discover secrets in insecure Azure Deployments
 ## Description
 
 
-Azure deployment templates are static files stored in your tenant used to describe instantiated resources. When infrastructure as code tools such as bicep or terraform are used without either the @secure or "sensitive" decorators. This could result in secrets being exposed in clear text from deployment settings in Azure portal. To automate the process of discovering such secrets the DeploymentGrazor tool was created.  This tool expounds on the following Az PowerShell command:
+Azure deployment templates are static files stored in your tenant used to describe instantiated resources. When infrastructure as code tools such as bicep or terraform are used without either the @secure or "sensitive" decorators. This could result in secrets being exposed in clear text from deployment settings in Azure portal. To automate the process of discovering such secrets the DeploymentGrazor tool was created.  This tool automates the [AZT605.3](https://microsoft.github.io/Azure-Threat-Research-Matrix/CredentialAccess/AZT605/AZT605-3/) threat outlined on the Azure Threat Matrix
 
-~~~
-Get-AzResourceGroupDeployment -ResourceGroupName <resourceGroupName>
-~~~
+<img width="1172" alt="azure threat matrix" src="https://github.com/east-african-techguy/DeploymentGrazor/assets/92095548/7380ce75-9c5e-453d-bce4-63b6bf9ec419">
 
 
 Versions Notes:
