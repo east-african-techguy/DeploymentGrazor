@@ -194,26 +194,22 @@ function Connect-AzureEnvironment {
 # Main Function to Scan Deployment Templates
 
 function Run-SubscriptionScan {
-    $count = 0
-    $deploymentCount = 0
     # Secret Test Cases to check in deployment templates
     $secretTestCases = 'authkey', 'instrumentationkey', 'password', 'clientsecret', 'connectionstring'
 
     foreach ($id in $subscriptionList) {
-        $resourceGroup = Get-AzResourceGroup
-        
-        while ($count -lt $resourceGroup.count) {
+        $resourceGroups = Get-AzResourceGroup
 
-            # Pulls all the deployment template from a resource group        
-            $deployment = Get-AzResourceGroupDeployment -ResourceGroupName $resourceGroup[$count].ResourceGroupName
+        foreach ($rg in $resourceGroups) {
 
+            # Pulls all the deployment template from a resource group
+            $deployments = Get-AzResourceGroupDeployment -ResourceGroupName $rg.ResourceGroupName
 
-            if ($deployment) {
-                
-                while ($deploymentCount -lt $deployment.Count) {
-                
-                                          
-                    $Parameters_Secret_Collection = $deployment[$deploymentCount]
+            if ($deployments) {
+
+                foreach ($deployment in $deployments) {
+
+                    $Parameters_Secret_Collection = $deployment
             
                     # This checks for secrets in the parameters section of deployments templates
                     foreach ($parData in $Parameters_Secret_Collection) {
@@ -224,21 +220,19 @@ function Run-SubscriptionScan {
                                        # This checks for secrets using the secrets test cases. $secretVal is used to elimate secureStrings
                                        $secretVal = $key[$i].Type
                                        if (($i.ToLowerInvariant() -like "*" + $item + "*") -and ($secretVal -eq 'String')) {
+        $outLines = @()
+        $outLines += "================================================================================================="
+        $outLines += "Subscription ID : $id"
+        $outLines += "================================================================================================="
+        $outLines += "========================================"
+        $outLines += "ResourceGroup ... $($rg.ResourceGroupName)"
+        $outLines += "========================================"
+        $outLines += "========================================"
+        $outLines += " Secret in DeploymentTemplate $($deployment.DeploymentName)"
+        $outLines += "========================================"
+        $outLines += "$i : $($key[$i].Value)"
+        $outLines | Out-File -Append './results.txt'
 
-                                            Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
-                                            Write-Output "Subscription ID :" $id | Out-File -Append "./results.txt"  
-                                            Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
-
-                                            Write-Output "==============================================" | Out-File -Append "./results.txt"  
-                                            Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./results.txt"  
-                                            Write-Output "==============================================" | Out-File -Append "./results.txt"  
-
-                                            Write-Output "==============================================" | Out-File -Append "./results.txt"  
-                                            Write-Output " Secret in Deployment Template" $Deployment[$deploymentCount].DeploymentName | Out-File -Append "./results.txt"   
-                                            Write-Output "==============================================" | Out-File -Append "./results.txt" 
-
-                                            # writes output and appends to file
-                                            Write-Output $i : $key[$i].Value | Out-File -Append "./results.txt"  
                                         }
                                     }
                            
@@ -250,40 +244,35 @@ function Run-SubscriptionScan {
             
                     # Outputs Secret Check
 
-                    $Outputs_Secrets_Collection = $deployment[$deploymentCount].Outputs
+                    $Outputs_Secrets_Collection = $deployment.Outputs
 
             
                     foreach ($data in $Outputs_Secrets_Collection) {
                         foreach ($item in $secretTestCases) {
                             if ($data.Keys -like "*" + $item + "*") {
-
-                                Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
-                                Write-Output "Subscription ID :" $id | Out-File -Append "./results.txt"  
-                                Write-Output "===============================================================================" | Out-File -Append "./results.txt"  
-
-
-                                Write-Output "==============================================" | Out-File -Append "./results.txt"  
-                                Write-Output "ResourceGroup ..." $resourceGroup[$count].ResourceGroupName | Out-File -Append "./results.txt"  
-                                Write-Output "==============================================" | Out-File -Append "./results.txt"  
-
-                                Write-Output "==============================================" | Out-File -Append "./results.txt"  
-                                Write-Output " Secret in Deployment Template" $Deployment[$deploymentCount].DeploymentName | Out-File -Append "./results.txt"   
-                                Write-Output "==============================================" | Out-File -Append "./results.txt" 
-
+                                $outLines = @()
+                                $outLines += "================================================================================"
+                                $outLines += "Subscription ID : $id"
+                                $outLines += "================================================================================"
+                                $outLines += "========================================"
+                                $outLines += "ResourceGroup ... $($rg.ResourceGroupName)"
+                                $outLines += "========================================"
+                                $outLines += "========================================"
+                                $outLines += " Secret in Deployment Template $($deployment.DeploymentName)"
+                                $outLines += "========================================"
+                                $outLines += "$($data.Keys) : $($data.Values)"
+                                $outLines | Out-File -Append './results.txt'
 
 
-                                Write-Output $data.Keys ":" $data.Values | Out-File -Append "./results.txt"                   
                             }
                         }
                     
                     } 
                         
    
-                    $deploymentCount ++
                 }
 
             }
-            $count ++
         }
 
     
